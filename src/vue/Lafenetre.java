@@ -19,9 +19,7 @@ public class Lafenetre extends JPanel
     {
         
               
-           
-            
-        
+    
       
         Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         int h = (int)tailleEcran.getHeight();
