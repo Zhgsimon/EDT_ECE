@@ -1,5 +1,7 @@
 package modele;
 
+import dao.*;
+
 public class Utilisateur {
 	
 	protected int ID_utilisateur;
@@ -16,6 +18,13 @@ public class Utilisateur {
 		nom="";
 		prenom="";
 		droit=0;
+	}
+	public Utilisateur (int id, String email, String password, String nom, String prenom) {
+		this.ID_utilisateur=id;
+		this.email=email;
+		this.password=password;
+		this.nom=nom;
+		this.prenom=prenom;
 	}
 	
 	public int GetID_utilisateur() {
@@ -58,6 +67,13 @@ public class Utilisateur {
 	}
 	public void Setdroit(int droit) {
 		this.droit=droit;	
+	}
+	
+	public Utilisateur connexion(String email, String password)
+	{
+		//connexion à la bdd
+		DAO<Utilisateur> utilisateurdao= new UtilisateurDAO(Connexion.getInstance()); 
+		return utilisateurdao.find(email, password);
 	}
 	
 

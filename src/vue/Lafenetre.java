@@ -18,7 +18,16 @@ public class Lafenetre extends JPanel
     
     public Lafenetre()
     {
-        
+    	SwingUtilities.invokeLater(new Runnable() {
+    		public void run () {
+    			JFrame frame = new JFrame("EDT_ECE");
+    	        frame.setSize(1280, 750);
+    	        frame.add(new VueConnect());
+    	        
+    	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    		}
+    	});
+    	
     }
       public void paint(Graphics g)
     {
@@ -40,8 +49,6 @@ public class Lafenetre extends JPanel
         cour2.DessinerSeance(g);
         cour3.DessinerSeance(g);
         cour4.DessinerSeance(g);
-      
-       
         
     }
    }

@@ -32,9 +32,9 @@ public abstract class DAO<T> {
   public abstract boolean update(T obj);
 
   /**
-  * Méthode de recherche des informations
+  * Méthode de recherche des informations des etudiants/profs/admin
   * @param id
   * @return T
   */
-  public abstract T find(int id);
+  public abstract T find(String email, String password );
 }
