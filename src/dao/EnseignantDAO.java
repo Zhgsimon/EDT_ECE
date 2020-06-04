@@ -31,7 +31,7 @@ public class EnseignantDAO extends DAO<Enseignant>{
 	        ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM utilisateur WHERE email = "+email+" AND password="+password);
 	      if(result.first())
 	      {
-	    	  //On cherche à récupérer les cours qu'il enseigne
+	    	  //On cherche ï¿½ rï¿½cupï¿½rer les cours qu'il enseigne
 	    	  ArrayList<Cours> liste_cours=new ArrayList<Cours>();
 	    	  ResultSet result_cours = this.connect.createStatement(
 	    	  ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -52,10 +52,15 @@ public class EnseignantDAO extends DAO<Enseignant>{
 	    }
 	    return enseignant;
 	  }
-	  //Pour un enseignant donné (recherche possible avec son nom ou parmi une liste d’enseignants) 
-	  //et pour une semaine donnée, consulter tous les cours. Pour chaque jour de la semaine et pour chaque séance de cours, 
-	  //indiquer les informations suivantes : la date, le créneau horaire, la (les) salle(s), 
+	  //Pour un enseignant donnï¿½ (recherche possible avec son nom ou parmi une liste dï¿½enseignants) 
+	  //et pour une semaine donnï¿½e, consulter tous les cours. Pour chaque jour de la semaine et pour chaque sï¿½ance de cours, 
+	  //indiquer les informations suivantes : la date, le crï¿½neau horaire, la (les) salle(s), 
 	  //le site, le nom et le type du cours, le(s) enseignant(s), le(s) groupe(s).
+
+    @Override
+    public Enseignant find() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	  
 	  
 }

@@ -21,7 +21,7 @@ public class CoursDAO extends DAO<Cours>{
 	    return false;
 	  }
 	  
-	  //trouver toutes les infos d'un cours à partir de son id
+	  //trouver toutes les infos d'un cours ï¿½ partir de son id
 	  public Cours find(int id) {
 		  Cours cours = new Cours();      
 		      
@@ -37,5 +37,15 @@ public class CoursDAO extends DAO<Cours>{
 		    }
 		    return cours;
 	  }
+
+    @Override
+    public Cours find() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Cours find(String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

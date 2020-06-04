@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+
 //import com.sdz.connection.SdzConnection;
 
 public abstract class DAO<T> {
@@ -11,30 +12,36 @@ public abstract class DAO<T> {
   }
    
   /**
-  * Méthode de création
+  * Mï¿½thode de crï¿½ation
   * @param obj
   * @return boolean 
   */
   public abstract boolean create(T obj);
 
   /**
-  * Méthode pour effacer
+  * Mï¿½thode pour effacer
   * @param obj
   * @return boolean 
   */
   public abstract boolean delete(T obj);
 
   /**
-  * Méthode de mise à jour
+  * Mï¿½thode de mise ï¿½ jour
   * @param obj
   * @return boolean
   */
   public abstract boolean update(T obj);
 
   /**
-  * Méthode de recherche des informations des etudiants/profs/admin
+  * Mï¿½thode de recherche des informations des etudiants/profs/admin
   * @param id
   * @return T
   */
-  public abstract T find(String email, String password );
+  public abstract T find();
+  public abstract T find (String email, String password);
+
+  public Connection getConnect()
+  {
+      return connect;
+  }
 }

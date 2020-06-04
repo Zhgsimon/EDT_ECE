@@ -18,11 +18,11 @@ public class Connexion {
 	  private static Connection connect;
 	   
 	  //Constructeur prive
-	  public Connexion() {
+	  private Connexion() {
 	    try {
 	    	//Class.forName("com.mysql.cj.jdbc.Driver");
-	    	//Connexion.forName("com.mysql.cj.jdbc.Driver");
-	      connect = DriverManager.getConnection(url, user, passwd);
+                Connexion.forName("com.mysql.jdbc.Driver");
+                connect = DriverManager.getConnection(url, user, passwd);
 	    } catch (SQLException e) {
 	      e.printStackTrace();
 	    }
@@ -51,5 +51,5 @@ public class Connexion {
 	        System.out.println("CONNEXION SQL EXISTANTE ! ");
 	    }
 	    return connect;   
-	  }
+           }
 }

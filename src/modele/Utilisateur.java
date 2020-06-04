@@ -1,6 +1,7 @@
 package modele;
 
 import dao.*;
+import java.sql.Connection;
 
 public class Utilisateur {
 	
@@ -71,8 +72,10 @@ public class Utilisateur {
 	
 	public Utilisateur connexion(String email, String password)
 	{
-		//connexion à la bdd
-		DAO<Utilisateur> utilisateurdao= new UtilisateurDAO(Connexion.getInstance()); 
+		//connexion ï¿½ la bdd
+		DAO<Utilisateur> utilisateurdao= new UtilisateurDAO(Connexion.getInstance());
+                
+                System.out.println("Connexion etablie");
 		return utilisateurdao.find(email, password);
 	}
 	

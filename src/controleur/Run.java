@@ -1,5 +1,8 @@
 package controleur;
 
+import dao.Connexion;
+import dao.DAO;
+import dao.UtilisateurDAO;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Image;
@@ -21,7 +24,6 @@ public class Run {
 	{
 		this.frame_principale=frame_principale;
 		this.utilisateur=utilisateur;
-		
 		this.frame_principale.getvueConnect().addConnectListener(new ConnectListener ());
 	}
 	class ConnectListener implements ActionListener{
@@ -30,32 +32,38 @@ public class Run {
 		public void actionPerformed(ActionEvent arg0) {
 			String email=frame_principale.getvueConnect().getemail_text().getText();
 			String password= String.valueOf(frame_principale.getvueConnect().getpassword_text().getPassword());
-			frame_principale.getvueConnect().getmessage().setText("email:"+ email+"   password:"+password);
 			
-			
+			//connexion de l'utilisateur
 			utilisateur=utilisateur.connexion(email, password);
+                        
+                        
 			//frame_principale.getvueConnect().getmessage().setText("ok");
-			System.out.println(utilisateur.Getemail());
-			
-			System.out.println(utilisateur.getpassword());
+                        frame_principale.getvueConnect().getmessage().setText("email:"+ utilisateur.Getemail()+"   password:"+utilisateur.getpassword());
 
 		}
 		
 	}
+        
+        public MainFrame getMainFrame ()
+        {
+            return this.frame_principale;
+        }
 	
-	/*public static void main(String [] args)
+	public static void main(String [] args)
 	{
-		
-		SwingUtilities.invokeLater(new Runnable() {
-    		public void run () {
-    			JFrame frame = new MainFrame("EDT_ECE");
-    	        frame.setSize(1280, 750);
-    	        frame.setVisible(true);
-    	        frame.add(new VueConnect());
-    	        
-    	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    		}
-    	});
+            MainFrame frame_principale= new MainFrame("EDT_ECE");
+            Utilisateur utilisateur= new Utilisateur();
+            
+            Run run=new Run(frame_principale,utilisateur);
+
+            
+            
+            //utilisateur=utilisateur.connexion("tata@gmail.com", "jesuistata");
+            System.out.println(utilisateur.Getemail());
+            System.out.println(utilisateur.getpassword());
+            
+            //frame_principale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
 		
 		//Affichage du form de connexion email:   pwd: 
 		

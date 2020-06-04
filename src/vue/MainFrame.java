@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class MainFrame extends JFrame {
 	private VueConnect vueConnect;
+        
 	
 	public MainFrame (String titre)
 	{

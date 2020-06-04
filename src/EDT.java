@@ -8,20 +8,22 @@ import vue.VueConnect;
 import dao.*;
 
 public class EDT {
-	public static void main(String [] args)
+	/*public static void main(String [] args)
 	{
 		
 		
-		//MainFrame frame_principale= new MainFrame("EDT_ECE");
+            //MainFrame frame_principale= new MainFrame("EDT_ECE");
 		
-		Utilisateur utilisateur= new Utilisateur();
-		utilisateur=utilisateur.connexion("tutu@gmail.com", "jesuistutu");
-		System.out.println(utilisateur.Getemail()); 
-            //Connexion connexion = new Connexion();
-		
+            Utilisateur utilisateur= new Utilisateur();
+            utilisateur=utilisateur.connexion("tutu@gmail.com", "jesuistutu");
+            System.out.println(utilisateur.Getemail()); 
+            
+            //DAO<Utilisateur> utilisateurdao= new UtilisateurDAO(Connexion.getInstance());
+            //utilisateur=utilisateurdao.find("tutu@gmail.com", "jesuistutu");
+            
 		//Run controlleur= new Run(frame_principale, utilisateur);
 
 		
-	}
+	}*/
 
 }
