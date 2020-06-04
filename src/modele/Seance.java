@@ -10,7 +10,7 @@ public class Seance {
 	private LocalTime heure_debut;
 	private LocalTime heure_fin;
 	
-	private int Etat; //1- En cours   2- Annulé    3- Plannifié   
+	private int Etat; //1- En cours   2- Annulï¿½    3- Plannifiï¿½   
 	private String  type_cours;
 	
 	private ArrayList<Groupe> liste_groupes;
@@ -51,6 +51,8 @@ public class Seance {
 	public LocalDate Getdate_seance() {
 		return date_seance;
 	}
+        
+     
 	public void Setdate_seance(LocalDate date_seance) {
 		this.date_seance=date_seance;
 	}
@@ -110,42 +112,53 @@ public class Seance {
 	}
 	
 	
-	//Ajoute un groupe a la séance
+	//Ajoute un groupe a la sï¿½ance
 	public void addGroupe(Groupe groupe){
 		if(!this.liste_groupes.contains(groupe))
 			this.liste_groupes.add(groupe);
 	}
 
-	//Retire un groupe de la séance
+	//Retire un groupe de la sï¿½ance
 	public void removeGroupe(Groupe groupe){
 		this.liste_groupes.remove(groupe);
 	}
 	
 	
 	
-	//Ajoute un enseignant à la séance
+	//Ajoute un enseignant ï¿½ la sï¿½ance
 	public void addEnseignant(Enseignant enseignant){
 		if(!this.liste_enseignants.contains(enseignant))
 			this.liste_enseignants.add(enseignant);
 	}
 
-	//Retire un enseignant de la séance
+	//Retire un enseignant de la sï¿½ance
 	public void removeEnseignant(Enseignant enseignant){
 		this.liste_enseignants.remove(enseignant);
 	}
 		
 	
 		
-	//Ajoute un enseignant à la séance
+	//Ajoute un enseignant ï¿½ la sï¿½ance
 	public void addSalle(Salle salle){
 		if(!this.liste_salles.contains(salle))
 			this.liste_salles.add(salle);
 	}
 
-	//Retire un enseignant de la séance
+	//Retire un enseignant de la sï¿½ance
 	public void removeSalle(Salle salle){
 			this.liste_salles.remove(salle);
 	}
+        
+        //dÃ©caler la sÃ©ance
+        public void moveSeance(int n_semaine, LocalDate n_date_seance, LocalTime n_heure_debut, LocalTime n_heure_fin){	
+            this.Setsemaine(n_semaine);
+            this.Setdate_seance(n_date_seance);
+            this.Setheure_debut(n_heure_debut);
+            this.Setheure_fin(n_heure_fin);
+        }
+        
+        
+        
 	
 	
 }
