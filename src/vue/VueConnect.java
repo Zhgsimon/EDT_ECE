@@ -2,18 +2,13 @@ package vue;
 
 import java.awt.*;
 import javax.swing.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
-import javax.imageio.ImageIO;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class VueConnect extends JPanel{
 	
-	JPanel panel;
+    Panel panel;
     JLabel email_label, password_label, message;
     JTextField email_text;
     JPasswordField password_text;
@@ -21,31 +16,42 @@ public class VueConnect extends JPanel{
 
 	public VueConnect()
 	{
-		setPreferredSize(new Dimension(1280, 750));
-		setLayout(new GridLayout(10,10));
+            /*
+            setTitle("Connextion"); //On donne un titre à l'application
+            setSize(320,240); //On donne une taille à notre fenêtre
+            setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
+            setResizable(true); //On permet le redimensionnement
+            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //On dit à l'application de se fermer lors du clic sur la croix
+            */
+            
+            
+            
+            
+            setPreferredSize(new Dimension(1280, 750));
+            setLayout(new GridLayout(10,10));
 		
-		// User Label
-        email_label = new JLabel();
-        email_label.setText("Email :");
-        email_text = new JTextField();
+            // User Label
+            email_label = new JLabel();
+            email_label.setText("Email :");
+            email_text = new JTextField();
         
-        // Password
+             // Password
 
-        password_label = new JLabel();
-        password_label.setText("Password :");
-        password_text = new JPasswordField();
+            password_label = new JLabel();
+            password_label.setText("Password :");
+            password_text = new JPasswordField();
 
-        // Submit
+            // Submit
 
-        this.add(email_label);
-        this.add(email_text);
-        this.add(password_label);
-        this.add(password_text);
+            this.add(email_label);
+            this.add(email_text);
+            this.add(password_label);
+            this.add(password_text);
 
-        message = new JLabel();
-        this.add(message);
-        submit=new JButton();
-        this.add(submit);
+            message = new JLabel();
+            this.add(message);
+            submit=new JButton();
+            this.add(submit);
 	}
     
     public JPasswordField getpassword_text()
