@@ -15,7 +15,8 @@ public class MainFrame extends JFrame {
 		super(titre);
 		
 		this.setSize(1280, 750);
-		
+		setLocationRelativeTo(null);//On centre la fenêtre sur l'écran
+                setResizable(true); //On permet le redimensionnement
 		vueConnect=new VueConnect();
 
 		//ajout de la vue
