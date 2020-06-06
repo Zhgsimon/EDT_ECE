@@ -6,17 +6,21 @@ import modele.Utilisateur;
 import vue.MainFrame;
 import vue.VueConnect;
 import dao.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EDT {
-	/*public static void main(String [] args)
+    
+    
+	public static void main(String [] args)
 	{
 		
-		
-            //MainFrame frame_principale= new MainFrame("EDT_ECE");
-		
+            /*MainFrame frame_principale= new MainFrame("EDT_ECE");
             Utilisateur utilisateur= new Utilisateur();
+            Run run=new Run(frame_principale,utilisateur);
+
             utilisateur=utilisateur.connexion("tutu@gmail.com", "jesuistutu");
-            System.out.println(utilisateur.Getemail()); 
+            System.out.println(utilisateur.Getemail()); */
             
             //DAO<Utilisateur> utilisateurdao= new UtilisateurDAO(Connexion.getInstance());
             //utilisateur=utilisateurdao.find("tutu@gmail.com", "jesuistutu");
@@ -24,6 +28,6 @@ public class EDT {
 		//Run controlleur= new Run(frame_principale, utilisateur);
 
 		
-	}*/
+	}
 
 }

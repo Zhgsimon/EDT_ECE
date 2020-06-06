@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import modele.Promotion;
 
 public class PromotionDAO extends DAO<Promotion>{
@@ -25,12 +26,22 @@ public class PromotionDAO extends DAO<Promotion>{
     }
 
     @Override
-    public Promotion find() {
+    public Promotion find(int ID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Promotion find(String email, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Promotion> findList(int ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Promotion> findList_seance(int ID_utilisateur, int droit) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -10,6 +10,11 @@ public class Salle {
 		nom="";
 		capacite=0;
 	}
+        public Salle(int ID_salle, String nom, int capacite) {
+		this.ID_Salle=ID_salle;
+		this.nom=nom;
+		this.capacite=capacite;
+	}
 	
 	public int GetID_Salle() {
 		return ID_Salle;

@@ -2,6 +2,7 @@ package modele;
 
 import dao.*;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 public class Utilisateur {
 	
@@ -10,7 +11,7 @@ public class Utilisateur {
 	protected String password;
 	protected String nom;
 	protected String prenom;
-	protected int droit; //1-Admin    2-Enseignant  3-Etudiant 
+	protected int droit; //1-Admin    2-Enseignant  3-Etudiant   4-Referrant
 	
 	public Utilisateur() {
 		ID_utilisateur=0;
@@ -20,12 +21,13 @@ public class Utilisateur {
 		prenom="";
 		droit=0;
 	}
-	public Utilisateur (int id, String email, String password, String nom, String prenom) {
+	public Utilisateur (int id, String email, String password, String nom, String prenom, int droit) {
 		this.ID_utilisateur=id;
 		this.email=email;
 		this.password=password;
 		this.nom=nom;
 		this.prenom=prenom;
+                this.droit=droit;
 	}
 	
 	public int GetID_utilisateur() {
@@ -78,6 +80,9 @@ public class Utilisateur {
                 System.out.println("Connexion etablie");
 		return utilisateurdao.find(email, password);
 	}
+        
+        
+            
 	
 
 }

@@ -9,7 +9,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+import vue.VueEDT;
 import static java.awt.PageAttributes.MediaType.C;
 
 import modele.*;
@@ -30,15 +30,82 @@ public class Run {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			String email=frame_principale.getvueConnect().getemail_text().getText();
-			String password= String.valueOf(frame_principale.getvueConnect().getpassword_text().getPassword());
+                    String email=frame_principale.getvueConnect().getemail_text().getText();
+                    String password= String.valueOf(frame_principale.getvueConnect().getpassword_text().getPassword());
 			
-			//connexion de l'utilisateur
-			utilisateur=utilisateur.connexion(email, password);
+                    //connexion de l'utilisateur
+                    utilisateur=utilisateur.connexion(email, password);
+                    
+                    System.out.println(utilisateur.Getdroit());
+                    int droit=utilisateur.Getdroit();
+                    if(droit==0);
+                    {
+                        
+                        //frame_principale.getvueConnect().ErrorMessage("Email et Password incorrectes.");
+                    }
+                    if(droit==1) //admin
+                    {
+                
+                    }
+                    if(droit==2) //Enseignant
+                    {
+                        Enseignant enseignant=new Enseignant(utilisateur);
+                        enseignant.recupListCours(utilisateur.GetID_utilisateur());
+                        System.out.println("Size liste cours: "+enseignant.Getliste_cours().size());
+                        
+                        //on recup toutes ses seance
+                        ArrayList<Seance> liste_seance_enseignant= new ArrayList<Seance>();
+                        liste_seance_enseignant=enseignant.recupListSeance();
+                        System.out.println("Size liste seance: "+liste_seance_enseignant.size());
+                        
+                        //Pour chaque seance on set la liste des salles, enseignants, groupes
+                        for (int i=0; i<liste_seance_enseignant.size(); i++)
+                        {
+                            ArrayList<Salle> liste_salles= new ArrayList<Salle>();
+                            liste_salles=liste_seance_enseignant.get(i).recupListSalle();
+                            liste_seance_enseignant.get(i).Setliste_salles(liste_salles);
+                            System.out.println("Size liste salle: "+liste_salles.size()+"de la seance: "+liste_seance_enseignant.get(i).GetID_seance());
+
+                            ArrayList<Groupe> liste_groupes= new ArrayList<Groupe>();
+                            liste_groupes=liste_seance_enseignant.get(i).recupListGroupe();
+                            liste_seance_enseignant.get(i).Setliste_groupes(liste_groupes);
+                            System.out.println("Size liste groupe: "+liste_groupes.size()+"de la seance: "+liste_seance_enseignant.get(i).GetID_seance());
+
+                            ArrayList<Enseignant> liste_enseignants= new ArrayList<Enseignant>();
+                            liste_enseignants=liste_seance_enseignant.get(i).recupListEnseignant();
+                            //liste_seance_enseignant.get(i).Setliste_groupes(liste_groupes);
+                            System.out.println("Size liste enseignants: "+liste_enseignants.size()+"de la seance: "+liste_seance_enseignant.get(i).GetID_seance());
+
+
+                        }
+                        
+                    }
+                    if(droit==3) //Etudiant
+                    {
+                        // On construi un nouveau etudiant
+                        Etudiant etudiant= new Etudiant (utilisateur);
+                        
+                        //On recup ensuite son groupe 
+                        Groupe groupe=etudiant.recupGroupe();
+                        System.out.println("ID GROUPE: "+groupe.GetID_groupe());
+                        
+                        //on recup toutes ses seances du groupe
+                        ArrayList<Seance> liste_seance_etudiant= new ArrayList<Seance>();
+                        liste_seance_etudiant=etudiant.recupListSeance(groupe.GetID_groupe());
+                        System.out.println("Size liste seance: "+liste_seance_etudiant.size());
+
+
+                    }
+                    //On enlève tout
+                    frame_principale.getContentPane().removeAll();
+                    //On change de view
+                    //frame_principale.addVueEDT();
+                    
                         
                         
-			//frame_principale.getvueConnect().getmessage().setText("ok");
-                        frame_principale.getvueConnect().getmessage().setText("email:"+ utilisateur.Getemail()+"   password:"+utilisateur.getpassword());
+                        
+                    //frame_principale.getvueConnect().getmessage().setText("ok");
+                    frame_principale.getvueConnect().getmessage().setText("email:"+ utilisateur.Getemail()+"   password:"+utilisateur.getpassword());
 
 		}
 		
@@ -55,14 +122,10 @@ public class Run {
             Utilisateur utilisateur= new Utilisateur();
             
             Run run=new Run(frame_principale,utilisateur);
-
             
             
-            //utilisateur=utilisateur.connexion("tata@gmail.com", "jesuistata");
-            System.out.println(utilisateur.Getemail());
-            System.out.println(utilisateur.getpassword());
             
-            //frame_principale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame_principale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
 		
 		//Affichage du form de connexion email:   pwd: 

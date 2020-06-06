@@ -1,6 +1,7 @@
 package modele;
 import java.util.*;
 import java.time.*;
+import dao.*;
 
 public class Seance {
 	private int ID_seance;
@@ -10,7 +11,7 @@ public class Seance {
 	private LocalTime heure_debut;
 	private LocalTime heure_fin;
 	
-	private int Etat; //1- En cours   2- Annul�    3- Plannifi�   
+	private int Etat; //1- En cours   2- Annule    3- Plannifie   
 	private String  type_cours;
 	
 	private ArrayList<Groupe> liste_groupes;
@@ -33,6 +34,21 @@ public class Seance {
 		liste_salles=null;
 
 	}
+        public Seance(int ID_seance, int semaine, LocalDate date_seance, LocalTime heure_debut, LocalTime heure_fin, int etat)
+        {
+            this.ID_seance=ID_seance;
+            this.semaine=semaine;
+            this.date_seance=date_seance;
+            this.heure_debut=heure_debut;
+            this.heure_fin=heure_fin;
+            this.Etat=etat;
+            /*
+            this.type_cours=type_cours;
+            this.liste_groupes=liste_groupes;
+            this.liste_enseignants=liste_enseignants;
+            this.liste_salles=liste_salles;*/
+            
+        }
 	
 	public int GetID_seance() {
 		return ID_seance;
@@ -155,6 +171,37 @@ public class Seance {
             this.Setdate_seance(n_date_seance);
             this.Setheure_debut(n_heure_debut);
             this.Setheure_fin(n_heure_fin);
+        }
+        public ArrayList<Salle> recupListSalle()
+        {
+            ArrayList<Salle> liste_salles=new ArrayList<Salle> ();
+            
+
+            DAO<Salle> salledao= new SalleDAO(Connexion.getInstance());
+            liste_salles=salledao.findList(this.ID_seance);
+            
+            return liste_salles;
+        }
+        
+        public ArrayList<Groupe> recupListGroupe()
+        {
+            ArrayList<Groupe> liste_groupes=new ArrayList<Groupe> ();
+            
+            DAO<Groupe> groupedao= new GroupeDAO(Connexion.getInstance());
+            liste_groupes=groupedao.findList(this.ID_seance);
+            
+            return liste_groupes;
+        }
+        
+        public ArrayList<Enseignant> recupListEnseignant()
+        {
+            ArrayList<Enseignant> liste_enseignants=new ArrayList<Enseignant> ();
+            
+            DAO<Enseignant> enseignantdao= new EnseignantDAO(Connexion.getInstance());
+            liste_enseignants=enseignantdao.findList(this.ID_seance);
+            
+            System.out.println("Liste enseignants size: "+liste_enseignants.size());
+            return liste_enseignants;
         }
         
         

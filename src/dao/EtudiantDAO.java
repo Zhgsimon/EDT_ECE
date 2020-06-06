@@ -1,5 +1,6 @@
 package dao;
 import java.sql.*;
+import java.util.ArrayList;
 import modele.Etudiant;
 
 public class EtudiantDAO extends DAO<Etudiant>{
@@ -42,7 +43,17 @@ public class EtudiantDAO extends DAO<Etudiant>{
 	  }
 
     @Override
-    public Etudiant find() {
+    public Etudiant find(int ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Etudiant> findList(int ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Etudiant> findList_seance(int ID_utilisateur, int droit) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

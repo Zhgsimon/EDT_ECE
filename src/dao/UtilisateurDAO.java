@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modele.*;
 
@@ -38,17 +39,15 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 	    	Statement stmt = this.connect.createStatement();
                 
                 ResultSet result=stmt.executeQuery(query);
-	    	    	
-	      //ResultSet result = this.connect.createStatement().executeQuery(query);
-              
-              //ResultSet result= this.getConnect().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY).executeQuery(query);
-              System.out.println("OKOK");
-	      if(result.first())
+                
+              if(!result.isBeforeFirst()){
+                  System.out.println("No data retrieved");
+              }
+              else if(result.first())
               {
                   utilisateur = new Utilisateur(result.getInt("ID_utilisateur"),result.getString("Email"),result.getString("Password"),result.getString("Nom"),
-	          result.getString("Prenom"));
-                  System.out.println(utilisateur.Getemail());
-                  System.out.println(utilisateur.getpassword());
+	          result.getString("Prenom"), result.getInt("Droit"));
+                  
               }
 	    	  
 	      
@@ -76,7 +75,17 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 	}
 
     @Override
-    public Utilisateur find() {
+    public Utilisateur find(int ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Utilisateur> findList(int ID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Utilisateur> findList_seance(int ID_utilisateur, int droit) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

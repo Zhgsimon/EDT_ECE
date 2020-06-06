@@ -13,6 +13,12 @@ public class Groupe {
 		nom="";
 		liste_etudiants=null;
 	}
+        public Groupe(int ID_groupe, String nom)
+	{
+		this.ID_groupe=ID_groupe;
+		this.nom=nom;
+		liste_etudiants=null;
+	}
 	
 	public int GetID_groupe() {
 		return ID_groupe;

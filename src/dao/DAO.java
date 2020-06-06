@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+
+import modele.Cours;
 
 //import com.sdz.connection.SdzConnection;
 
@@ -37,11 +40,12 @@ public abstract class DAO<T> {
   * @param id
   * @return T
   */
-  public abstract T find();
+  public abstract T find(int ID);
   public abstract T find (String email, String password);
 
-  public Connection getConnect()
-  {
-      return connect;
-  }
+  //method to return ArrayList
+  public abstract ArrayList<T> findList(int ID);
+  public abstract ArrayList<T> findList_seance(int ID_utilisateur, int droit);
 }
+
+    

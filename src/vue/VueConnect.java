@@ -16,20 +16,22 @@ public class VueConnect extends JPanel{
 
 	public VueConnect()
 	{
-            /*
-            setTitle("Connextion"); //On donne un titre à l'application
-            setSize(320,240); //On donne une taille à notre fenêtre
-            setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
-            setResizable(true); //On permet le redimensionnement
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //On dit à l'application de se fermer lors du clic sur la croix
-            */
             
             
+            //setSize(320,240); //On donne une taille à notre fenêtre
+            //setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
+            //setResizable(true); //On permet le redimensionnement
+            //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //On dit à l'application de se fermer lors du clic sur la croix
+            
+            //panel.setLayout(new FlowLayout());
+            super();
             
             
-            setPreferredSize(new Dimension(1280, 750));
-            setLayout(new GridLayout(10,10));
-		
+            setPreferredSize(new Dimension(320, 240));
+            //setLayout(new FlowLayout());
+            //setLayout(new GridLayout(3,1));
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+                    
             // User Label
             email_label = new JLabel();
             email_label.setText("Email :");
@@ -50,7 +52,12 @@ public class VueConnect extends JPanel{
 
             message = new JLabel();
             this.add(message);
-            submit=new JButton();
+            submit=new JButton("Se connecter");{
+                {
+                    setSize(150, 75);
+                    setMaximumSize(getSize());
+                }
+            };
             this.add(submit);
 	}
     
