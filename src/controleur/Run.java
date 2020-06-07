@@ -42,7 +42,7 @@ public class Run {
                     if(droit==0);
                     {
                         
-                        //frame_principale.getvueConnect().ErrorMessage("Email et Password incorrectes.");
+                        frame_principale.getvueConnect().ErrorMessage("Tentative de connexion...");
                     }
                     if(droit==1) //admin
                     {
@@ -83,6 +83,10 @@ public class Run {
                         frame_principale.getContentPane().removeAll();
                         //On change de vue
                         frame_principale.addVueEDT(enseignant,liste_seance_enseignant);
+                        frame_principale.addSemaineListener();
+                        //frame_principale.addSwitchModeListener();
+                        MainFrame frameligne=new MainFrame();
+                        frameligne.add(new VueEDTLigne(enseignant,liste_seance_enseignant));
                         
                     }
                     if(droit==3) //Etudiant
@@ -123,6 +127,11 @@ public class Run {
                         frame_principale.getContentPane().removeAll();
                         
                         frame_principale.addVueEDT(etudiant,liste_seance_etudiant);
+                        frame_principale.addSemaineListener();
+                        System.out.println("OKIIIIIIIIIIIIIIIIIIIIIIIII");
+                        MainFrame frameligne=new MainFrame();
+                        frameligne.add(new VueEDTLigne(etudiant,liste_seance_etudiant));
+                        //frame_principale.addSwitchModeListener();
                     }
                     
                         
