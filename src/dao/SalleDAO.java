@@ -43,7 +43,7 @@ public class SalleDAO extends DAO<Salle>{
     public ArrayList<Salle> findList(int ID_seance) {
         ArrayList<Salle> liste_salles = new ArrayList<Salle>();  
 
-            String query ="SELECT * FROM `seance_salle` INNER JOIN salle ON seance_salle.ID_seance=salle.ID_salle AND seance_salle.ID_seance="+ID_seance;
+            String query ="SELECT DISTINCT * FROM `seance_salle` INNER JOIN salle ON seance_salle.ID_seance=salle.ID_salle AND seance_salle.ID_seance="+ID_seance;
             
             System.out.println(query);
 	    try {

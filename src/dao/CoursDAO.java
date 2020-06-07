@@ -23,21 +23,39 @@ public class CoursDAO extends DAO<Cours>{
 	    return false;
 	  }
 	  
-	  //trouver toutes les infos d'un cours a partir de son id
+	  //trouver toutes les infos d'un cours a partir de l'id d la seance
 	  public Cours find(int id) {
-		  Cours cours = new Cours();      
-		      
+		  Cours cours = new Cours();    
+                  String query="SELECT * FROM `seance` INNER JOIN cours ON seance.ID_cours=cours.ID_cours AND seance.ID_seance="+ id;
+		    System.out.println(query);
 		    try {
 		      ResultSet result = this.connect.createStatement(
 		        ResultSet.TYPE_SCROLL_INSENSITIVE,
-		        ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM Cours WHERE ID_cours = " + id);
+		        ResultSet.CONCUR_READ_ONLY).executeQuery(query);
 		      
 		      if(result.first())
-		    	  cours = new Cours(id,result.getString("Nom"));         
+		    	  cours = new Cours(result.getInt("ID_cours"),result.getString("Nom"));         
 		    } catch (SQLException e) {
 		      e.printStackTrace();
 		    }
 		    return cours;
+	  }
+           //trouver toutes les infos d'un cours a partir de l'id de la seance
+	  public String find_type_cours(int id) {
+		  String type_cours="";   
+                  String query="SELECT * FROM `seance` INNER JOIN type_cours ON seance.ID_type=type_cours.ID_type_cours AND seance.ID_seance="+ id;
+		    System.out.println(query);
+		    try {
+		      ResultSet result = this.connect.createStatement(
+		        ResultSet.TYPE_SCROLL_INSENSITIVE,
+		        ResultSet.CONCUR_READ_ONLY).executeQuery(query);
+		      
+		      if(result.first())
+		    	  type_cours = new String(result.getString("Nom"));         
+		    } catch (SQLException e) {
+		      e.printStackTrace();
+		    }
+		    return type_cours;
 	  }
           
           

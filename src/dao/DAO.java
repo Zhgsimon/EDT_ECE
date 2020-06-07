@@ -46,6 +46,11 @@ public abstract class DAO<T> {
   //method to return ArrayList
   public abstract ArrayList<T> findList(int ID);
   public abstract ArrayList<T> findList_seance(int ID_utilisateur, int droit);
+
+
+    public String find_type_cours(int GetID_seance) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
     

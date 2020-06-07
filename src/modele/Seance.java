@@ -11,7 +11,8 @@ public class Seance {
 	private LocalTime heure_debut;
 	private LocalTime heure_fin;
 	
-	private int Etat; //1- En cours   2- Annule    3- Plannifie   
+	private int Etat; //1- En cours   2- Annule    3- Plannifie  
+        private Cours cours;
 	private String  type_cours;
 	
 	private ArrayList<Groupe> liste_groupes;
@@ -93,6 +94,13 @@ public class Seance {
 	public void SetEtat(int Etat) {
 		this.Etat=Etat;
 	}
+        public Cours Getcours() {
+		return cours;
+	}
+        public void Setcours(Cours cours)
+        {
+            this.cours=cours;
+        }
 	
 	public String Gettype_cours() {
 		return type_cours;

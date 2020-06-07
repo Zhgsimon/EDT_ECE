@@ -5,10 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import vue.*;
 
 import javax.swing.*;
+import modele.Enseignant;
+import modele.Etudiant;
+import modele.Seance;
 
 public class MainFrame extends JFrame {
 	private VueConnect vueConnect;
@@ -39,18 +43,19 @@ public class MainFrame extends JFrame {
 		return this.vueConnect;
 	}
         
-        public void addVueEDT(){
+        public void addVueEDT(Etudiant etudiant, ArrayList<Seance> liste_seances){
             this.setTitle("Emploi du temps");
-            Graphics g = null;
-            VueEDT vueEDT= new VueEDT(g);
+            this.setSize(1280, 750);
+            VueEDT vueEDT= new VueEDT(etudiant,liste_seances);
+            this.getContentPane().add(vueEDT);
+        }
+        public void addVueEDT(Enseignant enseignant, ArrayList<Seance> liste_seances){
+            this.setTitle("Emploi du temps");
+            this.setSize(1280, 750);
+            
+            VueEDT vueEDT= new VueEDT(enseignant,liste_seances);
+            
             this.getContentPane().add(vueEDT);
         } 
-        
-        /*public VueEDT getVueEDT(){
-            this.setTitle("Emploi du temps");
-            VueEDT vueEDT= new VueEDT();
-            
-            return vueEDT;
-        }*/
 
 }

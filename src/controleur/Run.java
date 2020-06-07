@@ -26,6 +26,7 @@ public class Run {
 		this.utilisateur=utilisateur;
 		this.frame_principale.getvueConnect().addConnectListener(new ConnectListener ());
 	}
+        
 	class ConnectListener implements ActionListener{
 
 		@Override
@@ -73,11 +74,15 @@ public class Run {
 
                             ArrayList<Enseignant> liste_enseignants= new ArrayList<Enseignant>();
                             liste_enseignants=liste_seance_enseignant.get(i).recupListEnseignant();
-                            //liste_seance_enseignant.get(i).Setliste_groupes(liste_groupes);
+                            liste_seance_enseignant.get(i).Setliste_enseignants(liste_enseignants);
                             System.out.println("Size liste enseignants: "+liste_enseignants.size()+"de la seance: "+liste_seance_enseignant.get(i).GetID_seance());
 
 
                         }
+                        //On enlève tout
+                        frame_principale.getContentPane().removeAll();
+                        //On change de vue
+                        frame_principale.addVueEDT(enseignant,liste_seance_enseignant);
                         
                     }
                     if(droit==3) //Etudiant
@@ -93,16 +98,33 @@ public class Run {
                         ArrayList<Seance> liste_seance_etudiant= new ArrayList<Seance>();
                         liste_seance_etudiant=etudiant.recupListSeance(groupe.GetID_groupe());
                         System.out.println("Size liste seance: "+liste_seance_etudiant.size());
+                        
+                        //Pour chaque seance on set la liste des salles, enseignants, groupes
+                        for (int i=0; i<liste_seance_etudiant.size(); i++)
+                        {
+                            ArrayList<Salle> liste_salles= new ArrayList<Salle>();
+                            liste_salles=liste_seance_etudiant.get(i).recupListSalle();
+                            liste_seance_etudiant.get(i).Setliste_salles(liste_salles);
+                            System.out.println("Size liste salle: "+liste_salles.size()+"de la seance: "+liste_seance_etudiant.get(i).GetID_seance());
+
+                            ArrayList<Groupe> liste_groupes= new ArrayList<Groupe>();
+                            liste_groupes=liste_seance_etudiant.get(i).recupListGroupe();
+                            liste_seance_etudiant.get(i).Setliste_groupes(liste_groupes);
+                            System.out.println("Size liste groupe: "+liste_groupes.size()+"de la seance: "+liste_seance_etudiant.get(i).GetID_seance());
+
+                            ArrayList<Enseignant> liste_enseignants= new ArrayList<Enseignant>();
+                            liste_enseignants=liste_seance_etudiant.get(i).recupListEnseignant();
+                            liste_seance_etudiant.get(i).Setliste_enseignants(liste_enseignants);
+                            System.out.println("Size liste enseignants: "+liste_seance_etudiant.get(i).Getliste_enseignants().size()+" de la seance: "+liste_seance_etudiant.get(i).GetID_seance());
 
 
+                        }
+                        //On enlève tout
+                        frame_principale.getContentPane().removeAll();
+                        
+                        frame_principale.addVueEDT(etudiant,liste_seance_etudiant);
                     }
-                    //On enlève tout
-                    frame_principale.getContentPane().removeAll();
-                    //On change de view
-                    //frame_principale.addVueEDT();
                     
-                        
-                        
                         
                     //frame_principale.getvueConnect().getmessage().setText("ok");
                     frame_principale.getvueConnect().getmessage().setText("email:"+ utilisateur.Getemail()+"   password:"+utilisateur.getpassword());

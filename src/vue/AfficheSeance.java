@@ -12,25 +12,25 @@ import java.util.Random;
 
 public class AfficheSeance {
     
-    private int crenaux ;
+    private int creneaux ;
     private int jour;
     private int semaine;
     
-    private String matiere;
-    private String prof;
-    private String année_class;
+    private String cours;
+    private String enseignant;
+    private String promotion;
     private String salle;
     
-    public AfficheSeance(int i,int j,int se,String m, String p, String a_c, String s){
+    public AfficheSeance(int creneau,int jour,int semaine,String cours, String enseignant, String promotion, String salle){
         
-        crenaux = i; // de 0 a 6
-        jour = j; // de 0 a 5
-        semaine = se;// de 1 a 52
+        this.creneaux = creneau; // de 0 a 6
+        this.jour = jour; // de 0 a 5
+        this.semaine = semaine;// de 1 a 52
         
-        matiere = m;
-        prof = p;
-        année_class = a_c;
-        salle = s; 
+        this.cours = cours;
+        this.enseignant = enseignant;
+        this.promotion = promotion;
+        this.salle = salle; 
         
     }
      public void DessinerSeance(Graphics g) 
@@ -46,8 +46,8 @@ public class AfficheSeance {
             g.fillRect((int) (34+206*getjour()), (int) (166+72*getcrenaux()),206,58);
             g.setColor(Color.BLACK); 
             
-            g.drawString(getmatiere(),(int) (36+206*getjour()), (int) (180+72*getcrenaux()));
-            g.drawString(getprof(),(int) (36+206*getjour()), (int) (193+72*getcrenaux()));
+            g.drawString(getcours(),(int) (36+206*getjour()), (int) (180+72*getcrenaux()));
+            g.drawString(getenseignant(),(int) (36+206*getjour()), (int) (193+72*getcrenaux()));
             g.drawString(geta_c(),(int) (36+206*getjour()), (int) (206+72*getcrenaux()));
             g.drawString(getsalle(),(int) (36+206*getjour()), (int) (219+72*getcrenaux()));
         
@@ -56,7 +56,7 @@ public class AfficheSeance {
     }
     private int getcrenaux()
     {
-        return crenaux;
+        return creneaux;
     }
     
     private int getjour()
@@ -64,18 +64,18 @@ public class AfficheSeance {
         return jour;
     }
     
-    private String getmatiere()
+    private String getcours()
     {
-        return matiere;
+        return cours;
     }
     
-    private String getprof()
+    private String getenseignant()
     {
-        return prof;
+        return enseignant;
     }
     private String geta_c()
     {
-        return année_class;
+        return promotion;
     }
     private String getsalle()
     {

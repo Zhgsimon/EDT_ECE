@@ -10,9 +10,9 @@ public class Cours {
 		ID_cours=0;
 		nom="";
 	}
-	public Cours(int ID, String nom) {
-		ID_cours=0;
-		nom="";
+	public Cours(int ID_cours, String nom) {
+		this.ID_cours=ID_cours;
+		this.nom=nom;
 	}
 	
 	public int GetID_cours() {
